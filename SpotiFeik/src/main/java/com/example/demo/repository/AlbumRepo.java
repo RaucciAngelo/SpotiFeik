@@ -7,4 +7,5 @@ import com.example.demo.model.Album;
 @Repository
 public interface AlbumRepo extends JpaRepository<Album, Long>{
 
+
 }
