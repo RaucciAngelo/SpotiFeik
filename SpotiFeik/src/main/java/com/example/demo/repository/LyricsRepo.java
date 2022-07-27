@@ -15,6 +15,6 @@ public interface LyricsRepo extends JpaRepository<Lyrics, Long>{
 	@Query(value="select distinct L.* from Lyrics L where L.testo = :testo", nativeQuery = true)
 	public List<Lyrics> getLyricsByTesto(@Param("testo")String testo);
 	
-	@Query(value="select distinct L.* from Lyrics L, Brano B where B.id = :id and B.id_lyrics = L.id_lyrics", nativeQuery = true)
+	@Query(value="select distinct L.* from Lyrics L, Track T where T.id = :id and B.id_lyrics = L.id_lyrics", nativeQuery = true)
 	public Lyrics getLyricsByTrackId(@Param("id")Long id);
 }
