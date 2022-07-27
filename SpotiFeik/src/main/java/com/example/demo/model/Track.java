@@ -1,9 +1,5 @@
 package com.example.demo.model;
 
-
-public class Track {
-
-
 import java.util.List;
 
 import javax.persistence.*;
@@ -117,6 +113,5 @@ public class Track {
 	public void setLyrics(Lyrics lyrics) {
 		this.lyrics = lyrics;
 	}
-
 
 }
