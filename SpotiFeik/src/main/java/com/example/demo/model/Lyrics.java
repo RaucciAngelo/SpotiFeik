@@ -13,7 +13,7 @@ public class Lyrics {
 	private String testo;
 	
 	@OneToOne(mappedBy = "lyrics")
-	private Brano track;
+	private Track track;
 
 	public String getTesto() {
 		return testo;
@@ -23,15 +23,15 @@ public class Lyrics {
 		this.testo = testo;
 	}
 
-	public Brano getTrack() {
+	public Track getTrack() {
 		return track;
 	}
 
-	public void setTrack(Brano track) {
+	public void setTrack(Track track) {
 		this.track = track;
 	}
 
-	public Lyrics(String testo, Brano track) {
+	public Lyrics(String testo, Track track) {
 		super();
 		this.testo = testo;
 		this.track = track;

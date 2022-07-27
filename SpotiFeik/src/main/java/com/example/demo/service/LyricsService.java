@@ -58,7 +58,7 @@ public class LyricsService {
 		lyrics_repo.save(update_lyrics);
 	}
 	
-	public void updateLycricsTrack(Long id, Brano track) {
+	public void updateLycricsTrack(Long id, Track track) {
 		Lyrics update_lyrics = new Lyrics();
 		update_lyrics = this.getLyricsById(id);
 		update_lyrics.setTrack(track);
