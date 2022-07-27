@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Playlist;
 
 @Repository
-public interface PlaylistRepo extends JpaRepository<Playlist, Long>{
+public interface PlaylistRepo extends JpaRepository<Playlist, Long> {
 
 }

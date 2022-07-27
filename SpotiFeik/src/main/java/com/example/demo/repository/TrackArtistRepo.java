@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TrackArtistRepo extends JpaRepository<TrackArtist, Long> {
 
-    @Modifying
-    @Query(value = "DELETE FROM TrackArtist WHERE idTrack = :idTrack AND idArtist = :idArtist", nativeQuery = true)
-    void deleteTrackFromArtists(@Param("idTrack") Long idTrack, @Param("idArtist") Long idArtist);
+	@Modifying
+	@Query(value = "DELETE FROM TrackArtist WHERE idTrack = :idTrack AND idArtist = :idArtist", nativeQuery = true)
+	void deleteTrackFromArtists(@Param("idTrack") Long idTrack, @Param("idArtist") Long idArtist);
 
-    @Query(value = "DELETE FROM TrackArtist WHERE idArtist = :idArtist", nativeQuery = true)
-    void deleteArtistAndTracks(@Param("idArtist") Long idArtist);
+	@Query(value = "DELETE FROM TrackArtist WHERE idArtist = :idArtist", nativeQuery = true)
+	void deleteArtistAndTracks(@Param("idArtist") Long idArtist);
 }
