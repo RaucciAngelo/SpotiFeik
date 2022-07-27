@@ -21,7 +21,6 @@ import com.example.demo.service.LyricsService;
 @RequestMapping("/api")
 public class LyricsController {
 
-
     @Autowired
     private LyricsService lyrics_service;
 
@@ -31,8 +30,8 @@ public class LyricsController {
     }
 
     @PostMapping("/addLyrics")
-    public void addLyrics(@RequestBody Lyrics playlist) {
-        lyrics_service.saveLyric(playlist);
+    public void addLyrics(@RequestBody Lyrics lyrics) {
+        lyrics_service.saveLyrics(lyrics);
     }
 
     @DeleteMapping("/deleteLyrics/{id}")

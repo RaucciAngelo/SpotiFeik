@@ -8,19 +8,30 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Lyrics {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String testo;
-	
+	private String lyrics;
+
 	@OneToOne(mappedBy = "lyrics")
 	private Track track;
 
-	public String getTesto() {
-		return testo;
+	public Lyrics(String lyrics) {
+		super();
+		this.lyrics = lyrics;
 	}
 
-	public void setTesto(String testo) {
-		this.testo = testo;
+	public Lyrics() {
+		super();
+	}
+
+	public String getLyrics() {
+		return lyrics;
+	}
+
+	public void setLyrics(String lyrics) {
+		this.lyrics = lyrics;
 	}
 
 	public Track getTrack() {
@@ -31,13 +42,4 @@ public class Lyrics {
 		this.track = track;
 	}
 
-	public Lyrics(String testo, Track track) {
-		super();
-		this.testo = testo;
-		this.track = track;
-	}
-	
-	public Lyrics() {
-		super();
-	}
 }

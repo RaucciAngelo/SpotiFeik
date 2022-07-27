@@ -4,37 +4,39 @@ import javax.persistence.*;
 
 @Entity
 public class TrackArtist {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Track idTrack;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "track_id")
+	private Track track;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Artist idArtist;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "artist_id")
+	private Artist artist;
 
-    public TrackArtist(Track idTrack, Artist idArtist) {
-        this.idTrack = idTrack;
-        this.idArtist = idArtist;
-    }
+	public TrackArtist(Track track, Artist artist) {
+		this.track = track;
+		this.artist = artist;
+	}
 
-    public TrackArtist() {
-    }
+	public TrackArtist() {
+	}
 
-    public Track getIdTrack() {
-        return idTrack;
-    }
+	public Track getTrack() {
+		return track;
+	}
 
-    public void setIdTrack(Track idTrack) {
-        this.idTrack = idTrack;
-    }
+	public void setTrack(Track track) {
+		this.track = track;
+	}
 
-    public Artist getIdArtist() {
-        return idArtist;
-    }
+	public Artist getArtist() {
+		return artist;
+	}
 
-    public void setIdArtist(Artist idArtist) {
-        this.idArtist = idArtist;
-    }
+	public void setArtist(Artist artist) {
+		this.artist = artist;
+	}
 }

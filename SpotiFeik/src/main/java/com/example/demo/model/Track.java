@@ -12,35 +12,45 @@ public class Track {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private int duration;
+	private double duration;
 	private int plays;
 	private boolean explicit;
 	private String releaseDate;
 
-	@OneToMany(mappedBy = "idtrack")
+	@OneToMany(mappedBy = "track")
 	private List<TrackArtist> artists;
+	
+	@OneToMany(mappedBy = "track")
+	private List<TrackAuthor> authors;
 
-	@OneToMany(mappedBy = "idtrack")
+	@OneToMany(mappedBy = "track")
 	private List<TrackPlaylist> playlists;
 
-	@OneToOne(mappedBy = "idtrack")
+	@OneToOne
+	@JoinColumn(name = "lyrics_id")
 	private Lyrics lyrics;
+	
+	@ManyToOne
+	@JoinColumn(name = "album_id")
+	private Album album;
 
 	// contructor
 	public Track() {
 		super();
 	}
 
-	public Track(String title, int duration, int plays, boolean explicit, String releaseDate, Lyrics lyrics) {
+	public Track(String title, double duration, int plays, boolean explicit, String releaseDate, Album album, Lyrics lyrics) {
 		super();
 		this.title = title;
 		this.duration = duration;
 		this.plays = plays;
 		this.explicit = explicit;
 		this.releaseDate = releaseDate;
+		this.album = album;
 		this.lyrics = lyrics;
 	}
 
+	
 	// get e set
 	public Long getId() {
 		return id;
@@ -58,11 +68,11 @@ public class Track {
 		this.title = title;
 	}
 
-	public int getDuration() {
+	public double getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(double duration) {
 		this.duration = duration;
 	}
 
@@ -113,5 +123,22 @@ public class Track {
 	public void setLyrics(Lyrics lyrics) {
 		this.lyrics = lyrics;
 	}
+	
+	public List<TrackAuthor> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<TrackAuthor> authors) {
+		this.authors = authors;
+	}
+
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+
 
 }

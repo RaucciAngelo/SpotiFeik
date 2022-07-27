@@ -13,33 +13,30 @@ public class Playlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private Long id;
     private int nTrack;
     private int duration;
     private String name;
 
-
-    @ManyToMany(mappedBy = "piece")
-    private List<Track> tracks;
+    @OneToMany(mappedBy = "playlist")
+    private List<TrackPlaylist> tracks;
 
     public Playlist() {
-        super();
     }
 
-    public Playlist(long id, int nTrack, int duration, String name) {
+    public Playlist(int nTrack, int duration, String name) {
         super();
-        Id = id;
         this.nTrack = nTrack;
         this.duration = duration;
         this.name = name;
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
         public int getnPiece() {
@@ -74,11 +71,11 @@ public class Playlist {
         this.nTrack = nTrack;
     }
 
-    public List<Track> getTracks() {
+    public List<TrackPlaylist> getTracks() {
         return tracks;
     }
 
-    public void setTracks(List<Track> tracks) {
+    public void setTracks(List<TrackPlaylist> tracks) {
         this.tracks = tracks;
     }
 

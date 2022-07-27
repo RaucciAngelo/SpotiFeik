@@ -22,27 +22,31 @@ import com.example.demo.service.AlbumService;
 public class AlbumController {
 
 	@Autowired
-	private AlbumService albumservice;
-	
+	private AlbumService albumService;
+
 	@GetMapping("/getAllAlbums")
-	public List<Album> GetAllAlbum(){
-		return albumservice.getAllAlbum();
+	public List<Album> getAllAlbums() {
+		return albumService.getAllAlbums();
 	}
+
 	@GetMapping("/getAlbumById/{id}")
-	public Album getAlbumId(@PathVariable("id")Long id_album) {
-		return albumservice.getAlbumId(id_album);
+	public Album getAlbumId(@PathVariable("id") Long id) {
+		return albumService.getAlbumId(id);
 	}
-	@PostMapping("/addNewAlbum/{id}")
-	public void addNew(@RequestBody Album album,@PathVariable("id")Long id_album) {
-		albumservice.saveAlbum(album,id_album);
-		}
+
+	@PostMapping("/addAlbum")
+	public void addAlbum(@RequestBody Album album) {
+		albumService.addAlbum(album);
+	}
+
 	@DeleteMapping("/deleteAlbum/{id}")
-	public void deleteAlbum(@PathVariable("id")Long id_album) {
-		albumservice.deleteAlbum(id_album);
+	public void deleteAlbum(@PathVariable("id") Long id_album) {
+		albumService.deleteAlbum(id_album);
 	}
+
 	@PutMapping("/updateAlbum/{idAlbum}")
-	public void updateAlbum(@PathVariable("idAlbum")Long id_album,@RequestBody Album album) {
-		albumservice.updateAlbum(id_album,album);
+	public void updateAlbum(@PathVariable("idAlbum") Long id_album, @RequestBody Album album) {
+		albumService.updateAlbum(id_album, album);
 	}
-	
+
 }

@@ -21,28 +21,27 @@ import com.example.demo.service.PlaylistService;
 @RequestMapping("/api")
 public class PlaylistController {
 
+	@Autowired
+	private PlaylistService playlistService;
 
-    @Autowired
-    private PlaylistService playlistService;
+	@GetMapping("/getAllPlaylist")
+	public List<Playlist> getAllPlaylist() {
+		return playlistService.getAllPlaylist();
+	}
 
-    @GetMapping("/getAllPlaylist")
-    public List<Playlist> getAllPlaylist(){
-        return playlistService.getAllPlaylist();
-    }
+	@PostMapping("/addPlaylist")
+	public void addPlaylist(@RequestBody Playlist playlist) {
+		playlistService.savePlaylist(playlist);
+	}
 
-    @PostMapping("/addPlaylist")
-    public void addPlaylist(@RequestBody Playlist playlist) {
-        playlistService.savePlaylist(playlist);
-    }
+	@DeleteMapping("/deletePlaylist/{id}")
+	public void deletePlaylist(@PathVariable("id") Long id) {
+		playlistService.deletePlaylist(id);
+	}
 
-    @DeleteMapping("/deletePlaylist/{id}")
-    public void deletePlaylist(@PathVariable("id") Long id) {
-        playlistService.deletePlaylist(id);
-    }
-
-    @PutMapping("/updatePlaylist/{id}")
-    public void updatePlaylist(@PathVariable("id") Long id, @RequestBody Playlist playlist) {
-        playlistService.update(id, playlist);
-    }
+	@PutMapping("/updatePlaylist/{id}")
+	public void updatePlaylist(@PathVariable("id") Long id, @RequestBody Playlist playlist) {
+		playlistService.update(id, playlist);
+	}
 
 }

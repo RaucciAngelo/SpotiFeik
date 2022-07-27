@@ -1,42 +1,51 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Artist;
-import com.example.demo.model.Track;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.demo.model.TrackArtist;
 import com.example.demo.repository.ArtistRepo;
 import com.example.demo.repository.TrackArtistRepo;
 import com.example.demo.repository.TrackRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class TrackArtistService {
-    @Autowired
-    TrackArtistRepo trackArtistRepo;
-    @Autowired
-    TrackRepo trackRepo;
-    @Autowired
-    ArtistRepo artistRepo;
+	@Autowired
+	TrackArtistRepo trackArtistRepo;
 
-    public void addTrackToArtist(Long idTrack, Long idArtist) {
-        Track track = trackRepo.getReferenceById(idTrack);
-        Artist artist = artistRepo.getReferenceById(idArtist);
-        TrackArtist trackArtist= new TrackArtist(track, artist);
-        trackArtistRepo.save(trackArtist);
-    }
+	@Autowired
+	TrackRepo trackRepo;
 
-    public void deleteTrackFromArtist(Long idTrack, Long idArtist) {
-        trackArtistRepo.deleteTrackFromArtists(idTrack, idArtist);
-    }
+	@Autowired
+	ArtistRepo artistRepo;
 
-    public void deleteArtistAndHisTracks(Long idArtist) {
-        trackArtistRepo.deleteArtistAndTracks(idArtist);
-    }
+	public List<TrackArtist> getAllTrackArtist() {
+		return trackArtistRepo.findAll();
+	}
 
-    public void updateTrack(Long id, TrackArtist trackArtist) {
-        TrackArtist updateTrackArtist = trackArtistRepo.getReferenceById(id);
-        updateTrackArtist.setIdTrack(trackArtist.getIdTrack());
-        updateTrackArtist.setIdArtist(trackArtist.getIdArtist());
-        trackArtistRepo.save(updateTrackArtist);
-    }
+	public void addTrackToArtist(Long idTrack, Long idArtist) {
+		TrackArtist trackArtist = new TrackArtist(trackRepo.getReferenceById(idTrack), artistRepo.getReferenceById(idArtist));
+		trackArtistRepo.save(trackArtist);
+	}
+
+	public void deleteTrackArtist(Long id) {
+		trackArtistRepo.deleteById(id);
+	}
+
+	public void deleteTrackFromArtist(Long idTrack, Long idArtist) {
+		trackArtistRepo.deleteTrackFromArtists(idTrack, idArtist);
+	}
+
+	public void deleteArtistAndHisTracks(Long idArtist) {
+		trackArtistRepo.deleteArtistAndTracks(idArtist);
+	}
+
+	public void updateTrack(Long idTrackArtist, Long idTrack, Long idArtist) {
+		TrackArtist updateTrackArtist = trackArtistRepo.getReferenceById(idTrackArtist);
+		updateTrackArtist = new TrackArtist(trackRepo.getReferenceById(idTrack), artistRepo.getReferenceById(idArtist));
+		trackArtistRepo.save(updateTrackArtist);
+	}
+
 }
