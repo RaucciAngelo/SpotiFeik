@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+
+public class TrackController {
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +40,6 @@ public class TrackController {
 			@PathVariable("idLyrics") Long idLyrics) {
 		trackService.update(idTrack, track, idLyrics);
 	}
+
 
 }
