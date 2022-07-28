@@ -48,7 +48,7 @@ public class TrackController {
 	}
 
 	@GetMapping("/getArtistAuthorByTrack/{idTrack}")
-	public List<ReturnData> getArtistAuthorByTrack(@PathVariable("idTrack") Long idTrack) {
+	public ReturnData getArtistAuthorByTrack(@PathVariable("idTrack") Long idTrack) {
 		return trackService.getArtistAuthorByTrack(idTrack);
 	}
 	

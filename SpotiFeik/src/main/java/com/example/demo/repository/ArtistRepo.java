@@ -12,7 +12,7 @@ import com.example.demo.model.Artist;
 @Repository
 public interface ArtistRepo extends JpaRepository<Artist, Long> {
 
-	@Query(value = "select * from artist as a JOIN trackartist as ta ON a.id = ta.artist_id JOIN track as t ON t.id = ta.track_id where a.id = :id", nativeQuery = true)
+	@Query(value = "select a.* from artist as a JOIN track_artist as ta ON a.id = ta.artist_id JOIN track as t ON t.id = ta.track_id where t.id = :id", nativeQuery = true)
 	public List<Artist> getArtistByTrack(@Param("id") Long id);
 
 }

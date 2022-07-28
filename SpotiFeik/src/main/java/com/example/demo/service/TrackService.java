@@ -56,18 +56,22 @@ public class TrackService {
 		return artistRepo.getArtistByTrack(idTrack);
 	}
 
-	public List<ReturnData> getArtistAuthorByTrack(Long idTrack) {
+	public ReturnData getArtistAuthorByTrack(Long idTrack) {
 		
-		List<ReturnData> listaArtistiAutori = new ArrayList<ReturnData>();
+		List<Author> listaAuthors = authorRepo.getAuthorByTrack(idTrack);
+		List<Artist> listaArtists = artistRepo.getArtistByTrack(idTrack);
 		
-		for (Author author : authorRepo.getAuthorByTrack(idTrack)) {
-			for (Artist artist : artistRepo.getArtistByTrack(idTrack)) {
-				ReturnData returnData = new ReturnData(author, artist);
-				listaArtistiAutori.add(returnData);
-			}
-		}
+		ReturnData returnData = new ReturnData(listaAuthors, listaArtists);
 		
-		return listaArtistiAutori;
+		
+//		for (Author author : authorRepo.getAuthorByTrack(idTrack)) {
+//			for (Artist artist : artistRepo.getArtistByTrack(idTrack)) {
+//				ReturnData returnData = new ReturnData(author, artist);
+//				listaArtistiAutori.add(returnData);
+//			}
+//		}
+		
+		return returnData;
 	}
 
 }

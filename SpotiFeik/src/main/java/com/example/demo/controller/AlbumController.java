@@ -40,13 +40,13 @@ public class AlbumController {
 	}
 
 	@DeleteMapping("/deleteAlbum/{id}")
-	public void deleteAlbum(@PathVariable("id") Long id_album) {
-		albumService.deleteAlbum(id_album);
+	public void deleteAlbum(@PathVariable("id") Long idAlbum) {
+		albumService.deleteAlbum(idAlbum);
 	}
 
 	@PutMapping("/updateAlbum/{idAlbum}")
-	public void updateAlbum(@PathVariable("idAlbum") Long id_album, @RequestBody Album album) {
-		albumService.updateAlbum(id_album, album);
+	public void updateAlbum(@PathVariable("idAlbum") Long idAlbum, @RequestBody Album album) {
+		albumService.updateAlbum(idAlbum, album);
 	}
 
 }

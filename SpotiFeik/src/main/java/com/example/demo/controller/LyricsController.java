@@ -18,7 +18,7 @@ import com.example.demo.service.LyricsService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api")
+@RequestMapping("/api/Lyrics")
 public class LyricsController {
 
     @Autowired
